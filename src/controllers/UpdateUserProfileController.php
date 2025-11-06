@@ -4,7 +4,7 @@ require_once __DIR__ . '/../entities/UserProfile.php';
 class UpdateUserProfileController {
     private $entity;
 
-    public function __construct($userprofile = null) {
+    public function __construct($userProfile = null) {
         $this->entity = $userProfile ?? new UserProfile();
     }
 
@@ -17,4 +17,5 @@ class UpdateUserProfileController {
     }
 }
 ?>
+
 
