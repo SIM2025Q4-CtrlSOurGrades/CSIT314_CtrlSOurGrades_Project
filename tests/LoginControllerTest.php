@@ -52,5 +52,18 @@ class LoginControllerTest extends TestCase
         $result = $this->loginController->loginUser('alice','password','User Admin');
         $this->assertEquals(["This user account's user profile is currently suspended.",""], $result);
     }
+
+    public function testEmptyUsernameFails()
+    {
+        $this->userAccountMock->method('login')->willReturn([]);
+        $this->userProfileMock->method('getProfileIDByName')->willReturn(['pID' => 1]);
+    
+        $result = $this->loginController->loginUser('', 'password', 'User Admin');
+    
+        // Expect a specific error when username is empty
+        $this->assertEquals(["Username cannot be empty.",""], $result);
+    }
+
+    
 }
 ?>
