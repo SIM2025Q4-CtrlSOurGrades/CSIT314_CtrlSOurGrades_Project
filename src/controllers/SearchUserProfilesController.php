@@ -5,8 +5,8 @@ require_once __DIR__ . '/../entities/UserProfile.php';
 class SearchUserProfilesController {
     private $entity;
 
-    public function __construct() {
-        $this->entity = new UserProfile();
+    public function __construct($userProfile = null) {
+        $this->entity = $userProfile ?? new UserProfile();
     }
 
     // Only handle searching
@@ -15,3 +15,4 @@ class SearchUserProfilesController {
     }
 }
 ?>
+
