@@ -20,37 +20,32 @@ class CreateUserProfileControllerTest extends TestCase
 
     public function testCreateUserProfileSuccess()
     {
-        // Simulate successful creation (Active profile)
+        // Simulate successful creation (e.g., new role: Event Coordinator)
         $this->userProfileMock
             ->expects($this->once())
             ->method('createProfile')
-            ->with('John Doe', 'A volunteer profile', 'Active')
+            ->with('Event Coordinator', 'Manages and coordinates volunteering events', 'Active')
             ->willReturn(true);
 
-        $result = $this->controller->CreateUserProfile('John Doe', 'A volunteer profile', 'Active');
+        $result = $this->controller->CreateUserProfile('Event Coordinator', 'Manages and coordinates volunteering events', 'Active');
 
-        // Currently, controller doesn’t return the message — it just sets it internally.
-        // If you update it to return $message, use this assertion instead:
-        // $this->assertEquals("User profile created successfully.", $result);
-
+        // (If controller is updated to return $message, replace this with assertEquals)
         $this->assertNull($result, "Expected no direct return value from CreateUserProfile()");
     }
 
     public function testCreateUserProfileFailure()
     {
-        // Simulate failed creation (Suspended profile)
+        // Simulate failed creation (e.g., another role: Data Analyst)
         $this->userProfileMock
             ->expects($this->once())
             ->method('createProfile')
-            ->with('John Doe', 'A volunteer profile', 'Suspended')
+            ->with('Data Analyst', 'Analyzes volunteer engagement and performance data', 'Suspended')
             ->willReturn(false);
 
-        $result = $this->controller->CreateUserProfile('John Doe', 'A volunteer profile', 'Suspended');
-
-        // Same note as above: uncomment below if controller returns message
-        // $this->assertEquals("Failed to create user profile.", $result);
+        $result = $this->controller->CreateUserProfile('Data Analyst', 'Analyzes volunteer engagement and performance data', 'Suspended');
 
         $this->assertNull($result);
     }
 }
 ?>
+
