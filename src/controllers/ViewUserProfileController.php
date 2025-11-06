@@ -7,7 +7,7 @@ class ViewUserProfileController {
 
     public function __construct($userProfile = null) {
         // Controller creates its own entity
-        $this->userProfileEntity = $userprofile ?? new UserProfile();
+        $this->userProfileEntity = $userProfile ?? new UserProfile();
     }
 
     public function GetUserProfiles() {
@@ -21,4 +21,5 @@ class ViewUserProfileController {
 
 }
 ?>
+
 
