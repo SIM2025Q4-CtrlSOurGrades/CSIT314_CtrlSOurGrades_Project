@@ -54,8 +54,15 @@ class LoginController {
             $action = "{$profileID}_{$pName}_Menu";
             return [$action, $userData['aID']];
         }
+		
+		/* code to pass the failed test
+		// Case 4: Username is empty
+		if (trim($name) === '') {
+		    return ["Username cannot be empty.",""];
+		}
+		*/
 
-        // Case 4: Any other status
+        // Case 5: Any other status
         return ["This user account cannot be accessed at this time.",""];
     }
 }
