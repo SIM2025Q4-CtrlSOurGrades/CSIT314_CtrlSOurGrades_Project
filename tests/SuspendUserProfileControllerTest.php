@@ -20,14 +20,14 @@ class SuspendUserProfileControllerTest extends TestCase
 
     public function testSuspendUserProfileSuccess()
     {
-        // Simulate successful suspension of a profile (e.g., pID = 4 for Event Coordinator)
+        // Simulate successful suspension of a profile (e.g., pID = 2 for CSR Rep)
         $this->userProfileMock
             ->expects($this->once())
             ->method('suspendProfile')
-            ->with(4)
+            ->with(2)
             ->willReturn(true);
 
-        $result = $this->controller->suspendUserProfile(4);
+        $result = $this->controller->suspendUserProfile(2);
         $this->assertTrue($result);
     }
 
