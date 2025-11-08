@@ -15,6 +15,11 @@ class LoginController {
     }
 
     public function loginUser($name, $password, $loginAs) {
+
+		if (trim($name) === '') {
+		    return ["Username cannot be empty.",""];
+		}
+		
         // get profile ID using the name selected--
         $profileNameArray = $this->userProfileEntity->getProfileIDByName($loginAs);
         $loginAsID = $profileNameArray['pID'] ?? null;
@@ -54,8 +59,8 @@ class LoginController {
             $action = "{$profileID}_{$pName}_Menu";
             return [$action, $userData['aID']];
         }
-
-        // Case 4: Any other status
+		
+        // Case 5: Any other status
         return ["This user account cannot be accessed at this time.",""];
     }
 }
